@@ -5,7 +5,7 @@ import pigeon from '../assets/pigeon.png';
 import logo from '../assets/Zhoonstagram.png';
 import {TextBox,Button} from 'custom-components';
 
-const HomeScreen = () => {
+const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const onChangeUsernameState = text => {
@@ -40,4 +40,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default LoginScreen;

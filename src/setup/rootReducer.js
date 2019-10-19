@@ -1,4 +1,4 @@
-import homeReducer from '../app/Home/duck/reducer';
+import homeReducer from '../app/Login/duck/reducer';
 import {combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
