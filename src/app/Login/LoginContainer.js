@@ -1,8 +1,12 @@
 import React from 'react';
 import LoginScreen from './LoginScreen';
+import {withNavigation} from 'react-navigation';
 
-const LoginContainer = () => {
-  return <HomeScreen />;
+const LoginContainer = ({navigation}) => {
+  const navigateToFeed = () => {
+    navigation.navigate('App');
+  };
+  return <LoginScreen onLogin={navigateToFeed} />;
 };
 
-export default LoginContainer;
+export default withNavigation(LoginContainer);

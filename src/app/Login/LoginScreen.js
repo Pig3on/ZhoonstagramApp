@@ -5,7 +5,7 @@ import pigeon from '../assets/pigeon.png';
 import logo from '../assets/Zhoonstagram.png';
 import {TextBox,Button} from 'custom-components';
 
-const LoginScreen = () => {
+const LoginScreen = ({onLogin}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const onChangeUsernameState = text => {
@@ -34,7 +34,7 @@ const LoginScreen = () => {
             onChangeText={onChangePasswordState}
           />
         </View>
-        <Button text={"Login"}/>
+        <Button onPress={onLogin} text={"Login"}/>
       </View>
     </ImageBackground>
   );
