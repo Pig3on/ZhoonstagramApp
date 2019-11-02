@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-const FeedScreen = () => {
+const FeedScreen = ({feed}) => {
   return (
     <View style={{backgroundColor:'yellow',flex:1}}>
-      <Text>Feed</Text>
+      <Text>{JSON.stringify(feed)}</Text>
     </View>
   );
 };

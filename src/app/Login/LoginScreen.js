@@ -3,7 +3,7 @@ import {Image, View, ImageBackground} from 'react-native';
 import styles from './styles';
 import pigeon from '../assets/pigeon.png';
 import logo from '../assets/Zhoonstagram.png';
-import {TextBox,Button} from 'custom-components';
+import {TextBox, Button} from 'custom-components';
 
 const LoginScreen = ({onLogin}) => {
   const [username, setUsername] = useState('');
@@ -14,6 +14,11 @@ const LoginScreen = ({onLogin}) => {
   const onChangePasswordState = text => {
     setPassword(text);
   };
+
+  const handleSubmit = (event) => {
+    onLogin(username, password);
+  };
+
   return (
     <ImageBackground source={pigeon} style={styles.mainBox}>
       <Image source={logo} style={{width: 450, height: 100}} />
@@ -34,7 +39,7 @@ const LoginScreen = ({onLogin}) => {
             onChangeText={onChangePasswordState}
           />
         </View>
-        <Button onPress={onLogin} text={"Login"}/>
+        <Button onPress={handleSubmit} text={'Login'}/>
       </View>
     </ImageBackground>
   );

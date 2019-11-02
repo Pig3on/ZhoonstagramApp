@@ -11,12 +11,17 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {Provider} from 'react-redux';
 import {store, persistor} from './src/setup/configureStore';
 import AppContainer from './src/setup/setupNav';
+import NavigationService from './src/navigation/NavigationService';
 
 const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <AppContainer />
+        <AppContainer
+          ref={navigatorRef => {
+            NavigationService.setTopLevelNavigator(navigatorRef);
+          }}
+        />
       </PersistGate>
     </Provider>
   );

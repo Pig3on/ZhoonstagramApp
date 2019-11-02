@@ -1,8 +1,10 @@
-import homeReducer from '../app/Login/duck/reducer';
+import loginReducer from '../app/Login/duck/reducer';
+import feedReducer from '../app/Feed/duck/reducer';
 import {combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
-  home: homeReducer,
+  login: loginReducer,
+  feed: feedReducer,
 });
 
 export default rootReducer;
