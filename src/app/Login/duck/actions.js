@@ -24,12 +24,12 @@ export function loginErrorAction(message) {
     payload: message,
   };
 }
-export default function logInUserAction(username, password) {
+export default function logInUserAction(email, password) {
   return dispatch => {
     dispatch(loginLoadingAction());
 
     const requestBody = {
-      username: username,
+      username: email,
       password: password,
       grant_type: 'password',
     };

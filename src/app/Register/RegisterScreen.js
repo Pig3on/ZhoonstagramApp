@@ -5,7 +5,7 @@ import pigeon from '../assets/zhoonTown.png';
 import logo from '../assets/Zhoonstagram.png';
 import {TextBox, Button} from 'custom-components';
 
-const LoginScreen = ({onLogin, navigateToRegister}) => {
+const RegiserScreen = ({onRegister, navigateLogin, register}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const onChangeEmailState = text => {
@@ -16,7 +16,11 @@ const LoginScreen = ({onLogin, navigateToRegister}) => {
   };
 
   const handleSubmit = event => {
-    onLogin(email, password);
+    const user = {
+      email: email,
+      password: password,
+    };
+    onRegister(user);
   };
 
   return (
@@ -25,7 +29,7 @@ const LoginScreen = ({onLogin, navigateToRegister}) => {
         source={logo}
         style={{width: 400, height: 100, alignSelf: 'center'}}
       />
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Register</Text>
       <View style={styles.loginForm}>
         <View style={styles.field}>
           <TextBox
@@ -44,14 +48,14 @@ const LoginScreen = ({onLogin, navigateToRegister}) => {
           />
         </View>
         <View style={styles.field}>
-          <Button onPress={handleSubmit} text={'Login'} />
+          <Button onPress={handleSubmit} text={'Register'} />
         </View>
         <View style={styles.field}>
-          <Button onPress={navigateToRegister} text={'Back to register'} />
+          <Button onPress={navigateLogin} text={'Login instead'} />
         </View>
       </View>
     </ImageBackground>
   );
 };
 
-export default LoginScreen;
+export default RegiserScreen;

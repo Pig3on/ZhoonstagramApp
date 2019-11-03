@@ -1,30 +1,28 @@
 import React from 'react';
-import LoginScreen from './LoginScreen';
+import RegisterScreen from './RegisterScreen';
 import {withNavigation} from 'react-navigation';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import logInUserAction from './duck/actions';
+import registerUserAction from './duck/actions';
 
-const LoginContainer = ({navigation, login}) => {
-  const handleLogin = (email, password) => {
-    login(email, password);
+const RegisterContainer = ({navigation, register}) => {
+  const handleRegister = user => {
+    register(user);
   };
-  const navigateToRegister = () => {
-    navigation.goBack();
+  const navigateLogin = () => {
+    navigation.navigate('Login');
   };
   return (
-    <LoginScreen
-      onLogin={handleLogin}
-      navigateToRegister={navigateToRegister}
-    />
+    <RegisterScreen navigateLogin={navigateLogin} onRegister={handleRegister} />
   );
 };
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  login: (email, password) => {
-    dispatch(logInUserAction(email, password));
+  register: user => {
+    dispatch(registerUserAction(user));
   },
   dispatch,
 });
@@ -44,4 +42,4 @@ const enhance = compose(
   ),
 );
 
-export default enhance(LoginContainer);
+export default enhance(RegisterContainer);

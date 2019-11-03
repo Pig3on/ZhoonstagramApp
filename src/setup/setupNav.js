@@ -7,6 +7,8 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import AddPhotoContainer from '../app/AddPhoto/AddPhotoContainer';
 import ProfileContainer from '../app/Profile/ProfileContainer';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {createStackNavigator} from 'react-navigation-stack';
+import RegisterContainer from '../app/Register/RegisterContainer';
 
 const AppStack = createBottomTabNavigator(
   {
@@ -42,14 +44,29 @@ const AppStack = createBottomTabNavigator(
     },
   },
 );
-
+const AuthStack = createStackNavigator(
+  {
+    Register: {
+      screen: RegisterContainer,
+    },
+    Login: {
+      screen: LoginContainer,
+    },
+  },
+  {
+    headerMode: 'none',
+    navigationOptions: {
+      headerVisible: false,
+    },
+  },
+);
 const AppNav = createAnimatedSwitchNavigator(
   {
-    Login: {screen: LoginContainer},
+    Auth: {screen: AuthStack},
     App: {screen: AppStack},
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Auth',
     headerMode: 'none',
     defaultNavigationOptions: {
       headerVisible: false,

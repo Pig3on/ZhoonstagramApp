@@ -1,16 +1,20 @@
 import axios from 'axios';
-//import {refresh} from 'react-native-app-auth';
 import {getSecureData, storeSecureData} from './secureStorage';
 
 let refreshSubscribers = [];
 let isRefreshing = false;
 let axiosInstance = null;
+let refreshFunction = null;
 
 export function getAxiosInstance() {
   if (axiosInstance == null) {
     axiosInstance = getNewAxiosInstance();
   }
   return axiosInstance;
+}
+
+export function setRefreshFunction(refreshFunctionConfig) {
+  refreshFunction = refreshFunctionConfig;
 }
 
 function getNewAxiosInstance() {
@@ -23,7 +27,7 @@ function getNewAxiosInstance() {
 function setupInterceptors() {
   axiosInstance.interceptors.request.use(
     async config => {
-      console.log("intercepting!!!")
+      console.log('intercepting!!!');
       const secureData = await getSecureData();
       if (secureData) {
         config.headers.authorization = `Bearer ${secureData.access_token}`;
@@ -33,7 +37,7 @@ function setupInterceptors() {
     },
     error => Promise.reject(error),
   );
- /*
+
   axiosInstance.interceptors.response.use(
     response => response,
     error => {
@@ -52,7 +56,7 @@ function setupInterceptors() {
       }
     },
   );
-*/
+
   axiosInstance.defaults.timeout = 5000;
   return axiosInstance;
 }
@@ -79,10 +83,7 @@ async function doRefreshToken(error) {
       if (tokens.refreshToken == null) {
         return Promise.reject(error);
       }
-      const newTokens = null; //todo do the refresh!!!!!
-      //await refresh(KEYCLOAK_CONFIG, {
-    //refreshToken: tokens.refreshToken,
-    //  });
+      const newTokens = await refreshFunction();
       await storeSecureData(newTokens);
       onRefreshed(newTokens);
       // get data from secured storage
