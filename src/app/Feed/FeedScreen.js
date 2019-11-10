@@ -1,9 +1,15 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity, FlatList} from 'react-native';
+import FeedItem from './Components/FeedItem';
+
 const FeedScreen = ({feed}) => {
+  const renderFeedItem = item => {
+    return <FeedItem key={item.index} feedItem={item.item} />;
+  };
+  
   return (
-    <View style={{backgroundColor:'yellow',flex:1}}>
-      <Text>{JSON.stringify(feed)}</Text>
+    <View style={{flex: 1}}>
+      <FlatList data={feed.data} renderItem={renderFeedItem} />
     </View>
   );
 };

@@ -2,6 +2,7 @@ import axios from 'axios';
 import {loginUrl} from '../../../services/apiUrlService';
 import {storeSecureData} from '../../../services/secureStorage';
 import {navigateToMain} from '../../../navigation/actions';
+import Base64 from '../../../utils/base64';
 const qs = require('qs');
 
 export const LOGIN_LOADING = 'LOGIN_LOADING';
@@ -35,7 +36,7 @@ export default function logInUserAction(email, password) {
     };
     var userAuth = 'zhoonstagram';
     var passwordAuth = 'secret';
-    var basicAuth = 'Basic ' + window.btoa(userAuth + ':' + passwordAuth);
+    var basicAuth = 'Basic ' + Base64.btoa(userAuth + ':' + passwordAuth);
 
     const config = {
       headers: {

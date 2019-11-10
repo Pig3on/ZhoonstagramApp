@@ -8,3 +8,7 @@ export function navigateToMain() {
 export function navigateToLogin() {
   NavigationService.navigate('Login');
 }
+
+export function navigateToAddPost(imgData) {
+  NavigationService.navigate('AddPost', imgData);
+}
