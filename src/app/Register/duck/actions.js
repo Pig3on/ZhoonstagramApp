@@ -25,7 +25,6 @@ export function registerErrorAction(message) {
 export default function registerUserAction(user) {
   return dispatch => {
     dispatch(registerLoadingAction());
-    console.log(user);
     axios
       .post(registerUrl, user)
       .then(() => {
@@ -33,7 +32,6 @@ export default function registerUserAction(user) {
         navigateToLogin();
       })
       .catch(e => {
-        console.log(e.response);
         dispatch(registerErrorAction());
       });
   };

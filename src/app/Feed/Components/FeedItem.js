@@ -7,7 +7,7 @@ const FeedItem = ({feedItem}) => {
   return (
     <View style={styles.mainBox}>
       <View style={styles.header}>
-        <Text>{feedItem.title}</Text>
+        <Text style={styles.title}>{feedItem.title}</Text>
       </View>
       <Image
         style={styles.image}
@@ -19,17 +19,19 @@ const FeedItem = ({feedItem}) => {
         <IconButton name="share" />
       </View>
       <View style={styles.caption}>
-        <View>
+        <View style={styles.item}>
           <Text>By: {feedItem.user.email}</Text>
         </View>
-        <View>
+        <View style={styles.item}>
           <Text>Liked by {feedItem.likes} people</Text>
         </View>
-        <View>
+        <View style={styles.item}>
           <Text>{feedItem.description}</Text>
         </View>
-        <View>
-          <Text>View all {feedItem.comments} comments</Text>
+        <View style={styles.item}>
+          <Text style={styles.commentsLink}>
+            View all {feedItem.comments} comments
+          </Text>
         </View>
       </View>
     </View>

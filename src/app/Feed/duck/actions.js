@@ -31,7 +31,6 @@ export default function getFeedAction() {
         dispatch(feedLoadedAction(data.data));
       })
       .catch(e => {
-        console.log(e.request);
         dispatch(feedErrorAction(e.message));
       });
   };

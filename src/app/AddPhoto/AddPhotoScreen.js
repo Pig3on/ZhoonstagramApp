@@ -1,10 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-const AddPhotoScreen = () => {
-  return (
-    <View style={{backgroundColor:'green',flex:1}}> 
+import {View, Image} from 'react-native';
+import styles from './styles';
 
-      <Text>PhotoScreen</Text>
+const AddPhotoScreen = ({imageData}) => {
+  return (
+    <View style={styles.imageBox}>
+      <Image style={styles.image} source={{uri: imageData}} />
     </View>
   );
 };

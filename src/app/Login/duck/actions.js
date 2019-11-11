@@ -45,7 +45,6 @@ export default function logInUserAction(email, password) {
         Authorization: basicAuth,
       },
     };
-    console.log(loginUrl);
     axios
       .post(loginUrl, qs.stringify(requestBody), config)
       .then(data => {

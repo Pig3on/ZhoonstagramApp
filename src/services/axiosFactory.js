@@ -27,7 +27,6 @@ function getNewAxiosInstance() {
 function setupInterceptors() {
   axiosInstance.interceptors.request.use(
     async config => {
-      console.log('intercepting!!!');
       const secureData = await getSecureData();
       if (secureData) {
         config.headers.authorization = `Bearer ${secureData.access_token}`;

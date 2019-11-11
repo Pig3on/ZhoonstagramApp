@@ -10,5 +10,7 @@ export function navigateToLogin() {
 }
 
 export function navigateToAddPost(imgData) {
+  console.log("navigatin")
+  console.log(imgData);
   NavigationService.navigate('AddPost', imgData);
 }
