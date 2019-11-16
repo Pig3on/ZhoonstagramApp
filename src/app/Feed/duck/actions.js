@@ -23,15 +23,13 @@ export function feedErrorAction(message) {
   };
 }
 export default function getFeedAction() {
-  return dispatch => {
-    dispatch(feedLoadingAction());
-    getAxiosInstance()
-      .get(feedUrl)
-      .then(data => {
-        dispatch(feedLoadedAction(data.data));
-      })
-      .catch(e => {
-        dispatch(feedErrorAction(e.message));
-      });
+  return async dispatch => {
+    try {
+      dispatch(feedLoadingAction());
+      const data = await getAxiosInstance().get(feedUrl);
+      dispatch(feedLoadedAction(data.data));
+    } catch (e) {
+      dispatch(feedErrorAction(e.message));
+    }
   };
 }

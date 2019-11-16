@@ -14,3 +14,8 @@ export function navigateToAddPost(imgData) {
   console.log(imgData);
   NavigationService.navigate('AddPost', imgData);
 }
+
+export function navigateBack() {
+  NavigationService.back();
+}
+

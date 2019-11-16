@@ -8,7 +8,7 @@ const FeedContainer = ({feed, getFeed}) => {
   useEffect(() => {
     getFeed();
   }, []);
-  return <FeedScreen feed={feed} />;
+  return <FeedScreen getFeed={getFeed} feed={feed} />;
 };
 const mapStateToProps = state => ({
   feed: state.feed,

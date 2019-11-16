@@ -3,8 +3,9 @@ import AddPhotoScreen from './AddPhotoScreen';
 import {withNavigation} from 'react-navigation';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
+import uploadImageAction from './duck/actions';
 
-const AddPhotoContainer = ({navigation}) => {
+const AddPhotoContainer = ({navigation, uploadImage}) => {
   const [imageData, setImageData] = useState(null);
 
   useEffect(() => {
@@ -14,14 +15,17 @@ const AddPhotoContainer = ({navigation}) => {
     }
   }, [navigation]);
 
-  return <AddPhotoScreen imageData={imageData} />;
+  return <AddPhotoScreen uploadImage={uploadImage} imageData={imageData} />;
 };
 
 const mapStateToProps = state => ({
-  feed: state.feed,
+  post: state.post,
 });
 
 const mapDispatchToProps = dispatch => ({
+  uploadImage: (post, image) => {
+    dispatch(uploadImageAction(post, image));
+  },
   dispatch,
 });
 

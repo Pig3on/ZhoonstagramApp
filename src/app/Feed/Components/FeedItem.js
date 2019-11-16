@@ -2,8 +2,11 @@ import React from 'react';
 import {View, Image, Text} from 'react-native';
 import styles from './styles';
 import IconButton from '../../CustomComponents/IconButton/IconButton';
+import {fileUrl} from '../../../services/apiUrlService';
 
 const FeedItem = ({feedItem}) => {
+  console.log(feedItem);
+  console.log(fileUrl + '/' + feedItem.picture);
   return (
     <View style={styles.mainBox}>
       <View style={styles.header}>
@@ -11,7 +14,7 @@ const FeedItem = ({feedItem}) => {
       </View>
       <Image
         style={styles.image}
-        source={{uri: 'https://reactjs.org/logo-og.png'}}
+        source={{uri: fileUrl + '/' + feedItem.picture}}
       />
       <View style={styles.controls}>
         <IconButton name="heart-empty" />
