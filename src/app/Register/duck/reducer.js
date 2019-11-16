@@ -1,7 +1,7 @@
 import {REGISTER_LOADING, REGISTER_LOADED, REGISTER_ERROR} from './actions';
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   isDone: false,
   isError: false,
   data: null,

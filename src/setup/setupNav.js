@@ -12,6 +12,7 @@ import RegisterContainer from '../app/Register/RegisterContainer';
 import ImagePicker from 'react-native-image-picker';
 import {View} from 'react-native';
 import { navigateToAddPost } from '../navigation/actions';
+import { PRIMARY } from '../app/theme/colors';
 
 const options = {
   title: 'Create a new post',
@@ -29,6 +30,9 @@ const AppStack = createBottomTabNavigator(
         tabBarIcon: ({tintColor}) => (
           <Icon name="ios-home" size={30} color={tintColor} />
         ),
+        tabBarOptions: {
+          activeTintColor: PRIMARY,
+        },
       },
     },
     AddPhoto: {
@@ -37,6 +41,9 @@ const AppStack = createBottomTabNavigator(
         tabBarIcon: ({tintColor}) => (
           <Icon name="ios-add" size={30} color={tintColor} />
         ),
+        tabBarOptions: {
+          activeTintColor: PRIMARY,
+        },
         tabBarOnPress: () => {
           ImagePicker.showImagePicker(options, response => {
             if (response.didCancel) {
@@ -56,6 +63,9 @@ const AppStack = createBottomTabNavigator(
         tabBarIcon: ({tintColor}) => (
           <Icon name="ios-person" size={30} color={tintColor} />
         ),
+        tabBarOptions: {
+          activeTintColor: PRIMARY,
+        },
       },
     },
   },

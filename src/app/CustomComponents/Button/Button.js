@@ -4,8 +4,12 @@ import styles from './ButtonStyle';
 
 const Button = props => {
   return (
-    <TouchableOpacity style={styles.button} {...props}>
-      <Text style={styles.buttonText}>{props.text}</Text>
+    <TouchableOpacity
+      {...props}
+      style={[styles.button, {borderColor: props.color}, props.style]}>
+      <Text style={[styles.buttonText, {color: props.color}]}>
+        {props.text}
+      </Text>
     </TouchableOpacity>
   );
 };

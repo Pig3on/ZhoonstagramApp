@@ -3,6 +3,7 @@ import {loginUrl} from '../../../services/apiUrlService';
 import {storeSecureData} from '../../../services/secureStorage';
 import {navigateToMain} from '../../../navigation/actions';
 import Base64 from '../../../utils/base64';
+import {handleError} from '../../../utils/defaultErrorHandler';
 const qs = require('qs');
 
 export const LOGIN_LOADING = 'LOGIN_LOADING';
@@ -26,7 +27,7 @@ export function loginErrorAction(message) {
   };
 }
 export default function logInUserAction(email, password) {
-  return dispatch => {
+  return async dispatch => {
     dispatch(loginLoadingAction());
 
     const requestBody = {
@@ -45,21 +46,18 @@ export default function logInUserAction(email, password) {
         Authorization: basicAuth,
       },
     };
-    axios
-      .post(loginUrl, qs.stringify(requestBody), config)
-      .then(data => {
-        storeSecureData(data.data)
-          .then(() => {
-            dispatch(loginLoadedAction());
-            navigateToMain();
-          })
-          .catch(e => {
-            dispatch(loginErrorAction(e.message));
-          });
-      })
-      .catch(e => {
-        console.log(JSON.stringify(e.response));
-        dispatch(loginErrorAction(e.message));
-      });
+    try {
+      const data = await axios.post(
+        loginUrl,
+        qs.stringify(requestBody),
+        config,
+      );
+      await storeSecureData(data.data);
+      dispatch(loginLoadedAction());
+      navigateToMain();
+    } catch (e) {
+      handleError('Error logging in, please check your credentials');
+      dispatch(loginErrorAction(e.message));
+    }
   };
 }

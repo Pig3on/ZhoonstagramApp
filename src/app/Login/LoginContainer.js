@@ -5,9 +5,9 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 import logInUserAction from './duck/actions';
 
-const LoginContainer = ({navigation, login}) => {
+const LoginContainer = ({navigation, loginUser, login}) => {
   const handleLogin = (email, password) => {
-    login(email, password);
+    loginUser(email, password);
   };
   const navigateToRegister = () => {
     navigation.goBack();
@@ -15,15 +15,18 @@ const LoginContainer = ({navigation, login}) => {
   return (
     <LoginScreen
       onLogin={handleLogin}
+      login={login}
       navigateToRegister={navigateToRegister}
     />
   );
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  login: state.login,
+});
 
 const mapDispatchToProps = dispatch => ({
-  login: (email, password) => {
+  loginUser: (email, password) => {
     dispatch(logInUserAction(email, password));
   },
   dispatch,

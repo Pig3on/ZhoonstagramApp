@@ -1,5 +1,6 @@
 import {feedUrl} from '../../../services/apiUrlService';
 import {getAxiosInstance} from './../../../services/axiosFactory';
+import {handleError} from '../../../utils/defaultErrorHandler';
 
 export const FEED_LOADING = 'FEED_LOADING';
 export const FEED_LOADED = 'FEED_LOADED';
@@ -29,6 +30,7 @@ export default function getFeedAction() {
       const data = await getAxiosInstance().get(feedUrl);
       dispatch(feedLoadedAction(data.data));
     } catch (e) {
+      handleError(e.message);
       dispatch(feedErrorAction(e.message));
     }
   };

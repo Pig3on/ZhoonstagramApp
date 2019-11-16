@@ -3,25 +3,30 @@ import RegisterScreen from './RegisterScreen';
 import {withNavigation} from 'react-navigation';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
-import logInUserAction from './duck/actions';
 import registerUserAction from './duck/actions';
 
-const RegisterContainer = ({navigation, register}) => {
+const RegisterContainer = ({navigation, register, registerUser}) => {
   const handleRegister = user => {
-    register(user);
+    registerUser(user);
   };
   const navigateLogin = () => {
     navigation.navigate('Login');
   };
   return (
-    <RegisterScreen navigateLogin={navigateLogin} onRegister={handleRegister} />
+    <RegisterScreen
+      register={register}
+      navigateLogin={navigateLogin}
+      onRegister={handleRegister}
+    />
   );
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  register: state.register,
+});
 
 const mapDispatchToProps = dispatch => ({
-  register: user => {
+  registerUser: user => {
     dispatch(registerUserAction(user));
   },
   dispatch,

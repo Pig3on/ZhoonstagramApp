@@ -1,8 +1,8 @@
 import {fileUrl, feedUrl} from '../../../services/apiUrlService';
 import {getAxiosInstance} from './../../../services/axiosFactory';
-import Axios from 'axios';
 import {navigateBack} from '../../../navigation/actions';
 import getFeedAction from '../../Feed/duck/actions';
+import {handleError} from '../../../utils/defaultErrorHandler';
 
 export const POST_LOADING = 'POST_LOADING';
 export const POST_LOADED = 'POST_LOADED';
@@ -50,6 +50,7 @@ export default function uploadImageAction(post, image) {
       dispatch(getFeedAction());
       navigateBack();
     } catch (e) {
+      handleError(e.message);
       dispatch(postErrorAction(e.message));
     }
   };

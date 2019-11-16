@@ -4,7 +4,6 @@ import {Dimensions} from 'react-native';
 const styles = StyleSheet.create({
   imageBox: {
     flex: 1,
-    backgroundColor: 'black',
   },
   image: {
     width: undefined,

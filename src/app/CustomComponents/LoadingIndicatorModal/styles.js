@@ -1,15 +1,12 @@
 import {StyleSheet} from 'react-native';
+import {ACCENT, PRIMARY} from '../../theme/colors';
 
 const styles = StyleSheet.create({
-  Textbox: {
-    flexGrow: 1,
+  box: {
+    flex: 1,
+    backgroundColor: PRIMARY,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 10,
-    color: 'white',
-    padding: 10,
   },
 });
 

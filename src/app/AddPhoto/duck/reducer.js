@@ -1,7 +1,7 @@
 import {POST_LOADING, POST_LOADED, POST_ERROR} from './actions';
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   isDone: false,
   isError: false,
   data: null,

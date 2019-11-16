@@ -5,7 +5,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import uploadImageAction from './duck/actions';
 
-const AddPhotoContainer = ({navigation, uploadImage}) => {
+const AddPhotoContainer = ({navigation, uploadImage, post}) => {
   const [imageData, setImageData] = useState(null);
 
   useEffect(() => {
@@ -15,7 +15,13 @@ const AddPhotoContainer = ({navigation, uploadImage}) => {
     }
   }, [navigation]);
 
-  return <AddPhotoScreen uploadImage={uploadImage} imageData={imageData} />;
+  return (
+    <AddPhotoScreen
+      post={post}
+      uploadImage={uploadImage}
+      imageData={imageData}
+    />
+  );
 };
 
 const mapStateToProps = state => ({

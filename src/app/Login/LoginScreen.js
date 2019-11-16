@@ -4,8 +4,10 @@ import styles from './styles';
 import pigeon from '../assets/zhoonTown.png';
 import logo from '../assets/Zhoonstagram.png';
 import {TextBox, Button} from 'custom-components';
+import LoadingIndicatorModal from '../CustomComponents/LoadingIndicatorModal/LoadingIndicatorModal';
+import { WHITE } from '../theme/colors';
 
-const LoginScreen = ({onLogin, navigateToRegister}) => {
+const LoginScreen = ({onLogin, navigateToRegister, login}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const onChangeEmailState = text => {
@@ -21,6 +23,7 @@ const LoginScreen = ({onLogin, navigateToRegister}) => {
 
   return (
     <ImageBackground source={pigeon} style={styles.mainBox}>
+      <LoadingIndicatorModal isLoading={login.isLoading} />
       <Image
         source={logo}
         style={{width: 400, height: 100, alignSelf: 'center'}}
@@ -31,6 +34,7 @@ const LoginScreen = ({onLogin, navigateToRegister}) => {
           <TextBox
             placeholderTextColor="white"
             placeholder={'Email'}
+            color={WHITE}
             value={email}
             onChangeText={onChangeEmailState}
           />
@@ -40,14 +44,19 @@ const LoginScreen = ({onLogin, navigateToRegister}) => {
             placeholderTextColor="white"
             placeholder={'Password'}
             value={password}
+            color={WHITE}
             onChangeText={onChangePasswordState}
           />
         </View>
         <View style={styles.field}>
-          <Button onPress={handleSubmit} text={'Login'} />
+          <Button onPress={handleSubmit} color={WHITE} text={'Login'} />
         </View>
         <View style={styles.field}>
-          <Button onPress={navigateToRegister} text={'Back to register'} />
+          <Button
+            onPress={navigateToRegister}
+            color={WHITE}
+            text={'Back to register'}
+          />
         </View>
       </View>
     </ImageBackground>
