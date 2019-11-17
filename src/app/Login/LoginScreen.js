@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Image, View, Text, ImageBackground} from 'react-native';
 import styles from './styles';
-import pigeon from '../assets/zhoonTown.png';
+import pigeon from '../assets/backdrop.png';
 import logo from '../assets/Zhoonstagram.png';
 import {TextBox, Button} from 'custom-components';
 import LoadingIndicatorModal from '../CustomComponents/LoadingIndicatorModal/LoadingIndicatorModal';

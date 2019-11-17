@@ -8,7 +8,7 @@ import rootReducer from './rootReducer';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: [],
+  blacklist: ['login', 'register'],
 };
 
 const middleware = [thunk];
