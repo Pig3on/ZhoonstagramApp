@@ -4,13 +4,15 @@ import {withNavigation} from 'react-navigation';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import logInUserAction from './duck/actions';
+import { navigateToMain } from '../../navigation/actions';
 
 const LoginContainer = ({navigation, loginUser, login}) => {
   const handleLogin = (email, password) => {
     loginUser(email, password);
   };
   const navigateToRegister = () => {
-    navigation.goBack();
+    //navigation.goBack();
+    navigateToMain();
   };
   return (
     <LoginScreen

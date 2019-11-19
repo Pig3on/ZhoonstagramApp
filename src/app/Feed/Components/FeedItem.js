@@ -14,7 +14,7 @@ const FeedItem = ({feedItem}) => {
       </View>
       <Image
         style={styles.image}
-        source={{uri: fileUrl + '/' + feedItem.picture}}
+        source={{uri: fileUrl + '/' + feedItem.picture + '.png'}}
       />
       <View style={styles.controls}>
         <IconButton name="heart-empty" />

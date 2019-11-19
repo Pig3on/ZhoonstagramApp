@@ -49,7 +49,6 @@ const AppStack = createBottomTabNavigator(
             if (response.didCancel) {
             } else if (response.error) {
             } else {
-              console.log(response);
               const source = {uri: response.uri};
               navigateToAddPost(source);
             }

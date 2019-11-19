@@ -6,13 +6,14 @@
  * @flow
  */
 
-import React,{useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {PersistGate} from 'redux-persist/integration/react';
 import {Provider} from 'react-redux';
 import {store, persistor} from './src/setup/configureStore';
 import AppContainer from './src/setup/setupNav';
 import NavigationService from './src/navigation/NavigationService';
 import './src/setup/setupRefresh';
+import SafeAreaView from 'react-native-safe-area-view';
 const App = () => {
   return (
     <Provider store={store}>

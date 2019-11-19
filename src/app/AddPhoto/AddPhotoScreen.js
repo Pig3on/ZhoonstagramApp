@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, SafeAreaView} from 'react-native';
 import styles from './styles';
 import TextBox from '../CustomComponents/TextBox/TextBox';
 import Button from '../CustomComponents/Button/Button';
@@ -18,9 +18,9 @@ const AddPhotoScreen = ({imageData, uploadImage, post}) => {
   };
 
   return (
-    <View style={styles.imageBox}>
+    <SafeAreaView style={styles.imageBox}>
       <LoadingIndicatorModal isLoading={post.isLoading} />
-      <Image style={styles.image} source={{uri: imageData}} />
+      <Image style={styles.image} source={{uri: imageData || ''}} />
       <View style={styles.formBox}>
         <TextBox
           placeholder={'Title'}
@@ -45,7 +45,7 @@ const AddPhotoScreen = ({imageData, uploadImage, post}) => {
           text={'Submit'}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

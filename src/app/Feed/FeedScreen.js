@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text,SafeAreaView, FlatList} from 'react-native';
 import FeedItem from './Components/FeedItem';
 
 const FeedScreen = ({feed, getFeed}) => {
@@ -7,7 +7,7 @@ const FeedScreen = ({feed, getFeed}) => {
     return <FeedItem key={item.index} feedItem={item.item} />;
   };
   return (
-    <View style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1}}>
       <FlatList
         refreshing={feed.isLoading}
         onRefresh={() => {
@@ -16,7 +16,7 @@ const FeedScreen = ({feed, getFeed}) => {
         data={feed.data}
         renderItem={renderFeedItem}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
