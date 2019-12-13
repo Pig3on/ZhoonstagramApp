@@ -11,8 +11,9 @@ import {createStackNavigator} from 'react-navigation-stack';
 import RegisterContainer from '../app/Register/RegisterContainer';
 import ImagePicker from 'react-native-image-picker';
 import {View} from 'react-native';
-import { navigateToAddPost } from '../navigation/actions';
-import { PRIMARY } from '../app/theme/colors';
+import {navigateToAddPost} from '../navigation/actions';
+import {PRIMARY} from '../app/theme/colors';
+import CommentContainer from '../app/Comments/CommentContainer';
 
 const options = {
   title: 'Create a new post',
@@ -22,10 +23,21 @@ const options = {
   },
 };
 
+const FeedStack = createStackNavigator({
+  Feed: {
+    screen: FeedContainer,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Comments: {
+    screen: CommentContainer,
+  },
+});
 const AppStack = createBottomTabNavigator(
   {
     Feed: {
-      screen: FeedContainer,
+      screen: FeedStack,
       navigationOptions: {
         tabBarIcon: ({tintColor}) => (
           <Icon name="ios-home" size={30} color={tintColor} />

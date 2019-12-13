@@ -24,14 +24,19 @@ export function registerErrorAction(message) {
 }
 export default function registerUserAction(user) {
   return dispatch => {
+    console.log(registerUrl)
+    console.log(user)
     dispatch(registerLoadingAction());
     axios
       .post(registerUrl, user)
       .then(() => {
+        console.log("yes");
         dispatch(registerLoadedAction());
+        
         navigateToLogin();
       })
       .catch(e => {
+        console.log(JSON.stringify(e));
         handleError(e.message);
         dispatch(registerErrorAction());
       });

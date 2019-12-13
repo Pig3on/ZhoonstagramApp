@@ -47,6 +47,7 @@ const RegiserScreen = ({onRegister, navigateLogin, register}) => {
             color={WHITE}
             placeholderTextColor="white"
             placeholder={'Password'}
+            secureTextEntry
             value={password}
             onChangeText={onChangePasswordState}
           />

@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     paddingRight: 5,
   },
   commentsLink: {
-    color: '#ededed',
+    color: 'black',
+    textDecorationLine: 'underline',
   },
 });
 

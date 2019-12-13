@@ -1,14 +1,25 @@
-import React ,{useEffect} from 'react';
+import React, {useEffect} from 'react';
 import FeedScreen from './FeedScreen';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import getFeedAction from './duck/actions';
+import {withNavigation} from 'react-navigation';
 
-const FeedContainer = ({feed, getFeed}) => {
+const FeedContainer = ({navigation, feed, getFeed}) => {
   useEffect(() => {
     getFeed();
-  }, []);
-  return <FeedScreen getFeed={getFeed} feed={feed} />;
+  }, [getFeed]);
+
+  const handleCommentsTap = postId => {
+    navigation.navigate('Comments', {postId});
+  };
+  return (
+    <FeedScreen
+      getFeed={getFeed}
+      handleCommentsTap={handleCommentsTap}
+      feed={feed}
+    />
+  );
 };
 const mapStateToProps = state => ({
   feed: state.feed,
@@ -28,6 +39,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
 });
 
 const enhance = compose(
+  withNavigation,
   connect(
     mapStateToProps,
     mapDispatchToProps,

@@ -28,6 +28,7 @@ function setupInterceptors() {
   axiosInstance.interceptors.request.use(
     async config => {
       const secureData = await getSecureData();
+      console.log(secureData);
       if (secureData) {
         config.headers.authorization = `Bearer ${secureData.access_token}`;
       }
@@ -51,6 +52,7 @@ function setupInterceptors() {
         }
         return Promise.reject(error);
       } catch (e) {
+        console.log(e);
         return Promise.reject(error);
       }
     },

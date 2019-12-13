@@ -3,10 +3,12 @@ import {View, Image, Text} from 'react-native';
 import styles from './styles';
 import IconButton from '../../CustomComponents/IconButton/IconButton';
 import {fileUrl} from '../../../services/apiUrlService';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const FeedItem = ({feedItem}) => {
-  console.log(feedItem);
-  console.log(fileUrl + '/' + feedItem.picture);
+const FeedItem = ({feedItem, handleCommentsTap}) => {
+  const handleViewComment = () => {
+    handleCommentsTap(feedItem.id);
+  };
   return (
     <View style={styles.mainBox}>
       <View style={styles.header}>
@@ -31,11 +33,11 @@ const FeedItem = ({feedItem}) => {
         <View style={styles.item}>
           <Text>{feedItem.description}</Text>
         </View>
-        <View style={styles.item}>
+        <TouchableOpacity onPress={handleViewComment} style={styles.item}>
           <Text style={styles.commentsLink}>
             View all {feedItem.comments} comments
           </Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

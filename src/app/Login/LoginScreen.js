@@ -43,6 +43,7 @@ const LoginScreen = ({onLogin, navigateToRegister, login}) => {
           <TextBox
             placeholderTextColor="white"
             placeholder={'Password'}
+            secureTextEntry
             value={password}
             color={WHITE}
             onChangeText={onChangePasswordState}
