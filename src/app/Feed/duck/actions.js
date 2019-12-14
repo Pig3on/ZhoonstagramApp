@@ -1,4 +1,4 @@
-import {feedUrl} from '../../../services/apiUrlService';
+import {feedUrl, reportUrl} from '../../../services/apiUrlService';
 import {getAxiosInstance} from './../../../services/axiosFactory';
 import {handleError} from '../../../utils/defaultErrorHandler';
 
@@ -30,8 +30,19 @@ export default function getFeedAction() {
       const data = await getAxiosInstance().get(feedUrl);
       dispatch(feedLoadedAction(data.data));
     } catch (e) {
-      handleError(e.message);
+      handleError(e);
       dispatch(feedErrorAction(e.message));
+    }
+  };
+}
+
+export function reportPostAction(postId) {
+  return async dispatch => {
+    try {
+      console.log(reportUrl + '/' + postId);
+      await getAxiosInstance().put(reportUrl + '/' + postId);
+    } catch (e) {
+      console.log(e);
     }
   };
 }

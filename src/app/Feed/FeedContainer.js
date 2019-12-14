@@ -2,10 +2,10 @@ import React, {useEffect} from 'react';
 import FeedScreen from './FeedScreen';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import getFeedAction from './duck/actions';
+import getFeedAction, {reportPostAction} from './duck/actions';
 import {withNavigation} from 'react-navigation';
 
-const FeedContainer = ({navigation, feed, getFeed}) => {
+const FeedContainer = ({navigation, reportPost, feed, getFeed}) => {
   useEffect(() => {
     getFeed();
   }, [getFeed]);
@@ -15,6 +15,7 @@ const FeedContainer = ({navigation, feed, getFeed}) => {
   };
   return (
     <FeedScreen
+      reportPost={reportPost}
       getFeed={getFeed}
       handleCommentsTap={handleCommentsTap}
       feed={feed}
@@ -28,6 +29,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getFeed: () => {
     dispatch(getFeedAction());
+  },
+  reportPost: postId => {
+    dispatch(reportPostAction(postId));
   },
   dispatch,
 });

@@ -8,14 +8,12 @@ export function navigateToMain() {
 export function navigateToLogin() {
   NavigationService.navigate('Login');
 }
-
+export function navigateToAuth() {
+  NavigationService.navigate('Auth');
+}
 export function navigateToAddPost(imgData) {
-  console.log("navigatin")
-  console.log(imgData);
   NavigationService.navigate('AddPost', imgData);
 }
-
 export function navigateBack() {
   NavigationService.back();
 }
-
