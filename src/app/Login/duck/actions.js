@@ -47,11 +47,13 @@ export default function logInUserAction(email, password) {
       },
     };
     try {
+      console.log("logging in")
       const data = await axios.post(
         loginUrl,
         qs.stringify(requestBody),
         config,
       );
+      console.log(data);
       await storeSecureData(data.data);
       dispatch(loginLoadedAction());
       navigateToMain();

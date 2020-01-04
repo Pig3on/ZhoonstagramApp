@@ -1,5 +1,7 @@
 import axios from 'axios';
 import {getSecureData, storeSecureData} from './secureStorage';
+import Snackbar from 'react-native-snackbar';
+import { PRIMARY } from '../app/theme/colors';
 
 let refreshSubscribers = [];
 let isRefreshing = false;
@@ -47,9 +49,16 @@ function setupInterceptors() {
           response,
           response: {status, data},
         } = error;
+        console.log(response)
         if (status === 401 || data[0].code === '403') {
           return doRefreshToken(error);
         }
+        console.log(response)
+        Snackbar.show({
+          title: data,
+          duration: Snackbar.LENGTH_SHORT,
+          backgroundColor: PRIMARY,
+        });
         return Promise.reject(error);
       } catch (e) {
         console.log(e);

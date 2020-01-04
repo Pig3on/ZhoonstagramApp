@@ -50,6 +50,7 @@ export default function uploadImageAction(post, image) {
       dispatch(getFeedAction());
       navigateBack();
     } catch (e) {
+      console.log("a fakin error")
       handleError(e.message);
       dispatch(postErrorAction(e.message));
     }
