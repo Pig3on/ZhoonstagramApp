@@ -5,7 +5,7 @@ import {ACCENT} from '../../theme/colors';
 
 const LoadingIndicatorModal = ({isLoading}) => {
   return (
-    <Modal visible={isLoading}>
+    <Modal testID="LoadingModal" visible={isLoading}>
       <View style={styles.box}>
         <ActivityIndicator size="large" color={ACCENT} />
       </View>
