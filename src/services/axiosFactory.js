@@ -21,7 +21,7 @@ export function setRefreshFunction(refreshFunctionConfig) {
 
 function getNewAxiosInstance() {
   axiosInstance = axios.create({
-    timeout: 5000,
+    timeout: 10000,
   });
   return setupInterceptors();
 }
@@ -49,17 +49,12 @@ function setupInterceptors() {
           response,
           response: {status, data},
         } = error;
-        console.log(response)
+        //console.log(response)
         if (status === 401 || data[0].code === '403') {
           return doRefreshToken(error);
         }
-        console.log(response)
-        Snackbar.show({
-          title: data,
-          duration: Snackbar.LENGTH_SHORT,
-          backgroundColor: PRIMARY,
-        });
-        return Promise.reject(error);
+       // console.log(response)
+        return Promise.reject(new Error(data));
       } catch (e) {
         console.log(e);
         return Promise.reject(error);
