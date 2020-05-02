@@ -1,4 +1,4 @@
-package com.zhoonstagram;
+package com.zhoonstagramapp;
 
 import android.app.Application;
 import android.content.Context;
