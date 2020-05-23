@@ -4,7 +4,7 @@ import {View, Image, Alert, Text} from 'react-native';
 import styles from './styles';
 import IconButton from '../../CustomComponents/IconButton/IconButton';
 import {fileUrl} from '../../../services/apiUrlService';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native';
 import SampleImage from '../../assets/backdrop.png';
 const FeedItem = ({feedItem, reportPost, handleCommentsTap}) => {
   const handleViewComment = () => {

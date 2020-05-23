@@ -14,7 +14,7 @@ const FeedScreen = ({feed, reportPost, handleCommentsTap, getFeed}) => {
     );
   };
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView testID="FeedScreen" style={{flex: 1}}>
       <FlatList
         refreshing={feed.isLoading}
         onRefresh={() => {
